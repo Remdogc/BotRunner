@@ -18,7 +18,7 @@ class run(commands.Cog):
         token = bots[args][0]
 
         path = url.split("/")[-1]
-
+        user = url.split("/")[-2]
 
         os.chdir("bots")
 
@@ -26,18 +26,13 @@ class run(commands.Cog):
 
         os.chdir(path)
 
-        os.system('git pull')
+        os.system(f'git pull {url}')
 
         with open('apikeys.py', 'w') as file:
             file.write(f'BOTTOKEN = \'{token}\'')
 
         os.system("python main.py")
 
-
-
-        
-
-        print(path)
 
 
 
